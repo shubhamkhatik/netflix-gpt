@@ -10,3 +10,11 @@ export const LOGO =
     { identifier: "hindi", name: "Hindi" },
     { identifier: "spanish", name: "Spanish" },
   ];
+  export const API_OPTIONS = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyY2YwMzYxNmE2ZWRkNDE5Y2Y2NGY4OGMxYWQ5NTNlZiIsInN1YiI6IjY1OTQ1NGQwNTFhNjRlMDQ4M2Y0NzYxMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DLIWM4N1YkbCq2h-CgggoEXiR8bubiRMwSMm1f-osPE'
+    }
+  };
+  export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
