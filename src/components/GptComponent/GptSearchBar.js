@@ -1,15 +1,20 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import lang from "../../utils/langConstant";
 import openai from "../../utils/openai";
 import { addGptMovieResult } from "../../utils/store/gptSlice";
-import { API_OPTIONS, moviesList} from "../../utils/constants";
+import { API_OPTIONS, moviesList } from "../../utils/constants";
 
 const GptSearchBar = () => {
+  const [searchTerm, setSearchTerm] = useState(" ");
   const dispatch = useDispatch();
   const searchText = useRef(null);
   const langKey = useSelector((store) => store.config.lang);
-  
+  // const handleInputChange = () => {
+  //   const newSearchTerm = searchText.current.value;
+  //   setSearchTerm(newSearchTerm);
+  // };
+
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -23,26 +28,32 @@ const GptSearchBar = () => {
         "&include_adult=false&language=en-US&page=1",
       API_OPTIONS
     );
-    const result= await data.json()
-   return result.results;
+    const result = await data.json();
+    return result.results;
   };
 
   const handleGptSearchClick = async () => {
-    shuffleArray(moviesList);
+    const currentInputVal =searchText.current.value
+    if ((searchTerm !== currentInputVal) && (currentInputVal!=="")) {
+      shuffleArray(moviesList);
 
-    const selectedMovies = moviesList.slice(0, 5);
+      const selectedMovies = moviesList.slice(0, 5);
 
-    const promiseArray = selectedMovies.map((movie) => searchMovieTMDB(movie));
-    // [Promise, Promise, Promise, Promise, Promise]
-     const tmdbResults = await Promise.all(promiseArray);
-   
-
-    dispatch(
-      addGptMovieResult({ movieNames: selectedMovies, movieResults: tmdbResults })
+      const promiseArray = selectedMovies.map((movie) =>
+        searchMovieTMDB(movie)
       );
+      // [Promise, Promise, Promise, Promise, Promise]
+      const tmdbResults = await Promise.all(promiseArray);
 
-
-
+      dispatch(
+        addGptMovieResult({
+          movieNames: selectedMovies,
+          movieResults: tmdbResults,
+        })
+      );
+      const newSearchTerm = searchText.current.value;
+      setSearchTerm(newSearchTerm);
+    }
 
     // ===============================openai code functionality==================================================
     // console.log(searchText.current.value);
@@ -91,6 +102,7 @@ const GptSearchBar = () => {
           type="text"
           className=" p-4 m-4 col-span-9"
           placeholder={lang[langKey].gptSearchPlaceholder}
+          // onChange={handleInputChange}
         />
         <button
           className="col-span-3 m-4 py-2 px-4 bg-red-700 text-white rounded-lg"
