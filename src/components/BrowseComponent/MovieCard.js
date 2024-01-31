@@ -28,7 +28,7 @@ const MovieCard = ({ posterPath, videoId }) => {
     navigate("/player");
   };
   return (
-    <div className="w-36 md:w-48 pr-4" onClick={() => goToPlayer(videoId)}>
+    <div className="w-36 md:w-48 pr-4 transition-transform transform hover:scale-105 cursor-pointer " onClick={() => goToPlayer(videoId)}>
       <img alt="Movie Card" src={IMG_CDN_URL + posterPath} />
     </div>
   );

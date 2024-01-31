@@ -3,6 +3,7 @@ import Login from "./Login";
 import Browse from "./Browse";
 import ErrorPage from "./Error";
 import TrailerPlayer from "./BrowseComponent/TrailerPlayer";
+import AuthGuard from "../utils/AuhGuard";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -12,8 +13,12 @@ const Body = () => {
     },
     {
       path: "/player",
-      element: <TrailerPlayer />,
+      element: <AuthGuard><TrailerPlayer /></AuthGuard>,
     },
+    // {
+    //   path: "/player",
+    //   element: <TrailerPlayer />,
+    // },
     {
       path: "/browse",
       element: <Browse />,

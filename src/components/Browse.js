@@ -5,10 +5,14 @@ import GptSearch from "./GptComponent/GptSearch";
 import TrailerContainer from "./BrowseComponent/TrailerContainer";
 import MovieContainer from "./BrowseComponent/MovieContainer";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
+import usePopularMovies from "../hooks/usePopularMovies";
+import useTopRated from "../hooks/useTopRated";
 
 const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
-  useNowPlayingMovies()
+  useNowPlayingMovies();
+  usePopularMovies();
+  useTopRated();
 
   return (
     <>

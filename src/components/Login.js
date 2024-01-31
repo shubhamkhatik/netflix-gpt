@@ -120,7 +120,13 @@ const Login = () => {
             ? "New to Netflix? Sign Up Now"
             : "Already registered? Sign In Now."}
         </p>
+        <div>
+        <h4>username : s@gmail.com</h4>
+        <h4>password : Shubham@1234</h4>
+      
+      </div>
       </form>
+    
     </div>
   )
 }
