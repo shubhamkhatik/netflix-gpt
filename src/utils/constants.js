@@ -10,11 +10,13 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "hindi", name: "Hindi" },
   { identifier: "spanish", name: "Spanish" },
 ];
+const TmdbToken="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyY2YwMzYxNmE2ZWRkNDE5Y2Y2NGY4OGMxYWQ5NTNlZiIsInN1YiI6IjY1OTQ1NGQwNTFhNjRlMDQ4M2Y0NzYxMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DLIWM4N1YkbCq2h-CgggoEXiR8bubiRMwSMm1f-osPE"
+
 export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization: "Bearer "+process.env.REACT_APP_TMDB_TOKEN,
+    Authorization: "Bearer "+TmdbToken,
   },
 };
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
@@ -44,3 +46,4 @@ export const moviesList = [
   "Tanu Weds Manu Returns",
   "Bajirao Mastani",
 ];
+
