@@ -3,7 +3,8 @@
 ### project tech => React.js, Tailwind css, Redux Toolkit, firebase
 
 ### API used==> TMDB API
-### [PROJECT DEPLOY LINK]()
+
+### [PROJECT DEPLOY LINK](https://netflix-123fe.web.app/)
 
 ## key features==>
 
@@ -78,3 +79,11 @@
 - Before starting the project please add .env file and add TMDB api key.
 
 - [TMDB api website](https://developer.themoviedb.org/reference/intro/getting-started).
+
+# firebase deploy commands
+
+- firebase login
+- npm install -g firebase-tools
+- firebase init
+- npm run build
+- firebase deploy
