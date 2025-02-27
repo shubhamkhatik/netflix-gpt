@@ -6,6 +6,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/store/userSlice';
+import JioNetworkWarning from './JioNetworkWarning.js';
 
 const Login = () => {
   const dispatch =useDispatch()
@@ -77,6 +78,8 @@ const Login = () => {
   return (
     <div>
       <Header />
+      <JioNetworkWarning/>
+
       <div className="absolute">
         <img className=" object-cover" src={BG_URL} alt="logo" />
       </div>

@@ -7,6 +7,7 @@ import MovieContainer from "./BrowseComponent/MovieContainer";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import usePopularMovies from "../hooks/usePopularMovies";
 import useTopRated from "../hooks/useTopRated";
+import JioNetworkWarning from "./JioNetworkWarning.js";
 
 const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
@@ -17,6 +18,7 @@ const Browse = () => {
   return (
     <>
       <Header />
+      <JioNetworkWarning/>
       {showGptSearch ? (
         <GptSearch />
       ) : (
